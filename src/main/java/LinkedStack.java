@@ -8,7 +8,7 @@
  }}}*/
 public class LinkedStack<T> implements StackInterface<T> {
 
-    Node<T> first;
+    Node<T> top;
     int size;
 
     /**{{{
@@ -16,11 +16,10 @@ public class LinkedStack<T> implements StackInterface<T> {
 	 }}}*/
     @Override
     public T pop() {
-        // TODO: Implement the pop method, which will be
-        //   similar to a removeFirst method for a LinkedList
-        //   (a special case of our remove method).
-        //   If the list is empty you should return a null value.
-        return null;
+		Node<T> ret = top;
+		top = (top == null) ? null : top.next;
+		size--;
+		return (ret == null) ? null : ret.element;
     }
 
     /**{{{
@@ -28,11 +27,7 @@ public class LinkedStack<T> implements StackInterface<T> {
 	 }}}*/
     @Override
     public T top() {
-        // TODO: Implement the top method, which will be
-        //   similar to a getFirst method for a LinkedList
-        //   (a special case of our get method).
-        //   If the list is empty you should return a null.
-        return null;
+		return (top == null) ? null : top.element;
     }
 
     /**{{{
@@ -40,9 +35,14 @@ public class LinkedStack<T> implements StackInterface<T> {
 	 }}}*/
     @Override
     public void push(T elem) throws NullPointerException {
-        // TODO: Implement the push method, which will be
-        //   similar to the addFirst method for a LinkedList.
-        //   If elem is null you should throw an exception.
+		if (elem == null) {
+			throw new NullPointerException();
+		} if (top == null) {
+			top = new Node<T>(elem);
+		} else {
+			top.next = new Node<T>(elem);
+		}
+		size++;
     }
 
     /**{{{
