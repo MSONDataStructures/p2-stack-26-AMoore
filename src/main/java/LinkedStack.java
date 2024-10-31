@@ -35,13 +35,12 @@ public class LinkedStack<T> implements StackInterface<T> {
 	 }}}*/
     @Override
     public void push(T elem) throws NullPointerException {
+		Node<T> prev = top;
 		if (elem == null) {
 			throw new NullPointerException();
-		} if (top == null) {
-			top = new Node<T>(elem);
-		} else {
-			top.next = new Node<T>(elem);
 		}
+		top = new Node<T>(elem);
+		top.next = prev;
 		size++;
     }
 
