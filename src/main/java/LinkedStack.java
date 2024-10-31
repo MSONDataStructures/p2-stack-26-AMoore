@@ -1,3 +1,5 @@
+import java.util.Iterator;
+
 /**{{{
  * A {@link LinkedStack} is a stack that is implemented using
  * a Linked List structure to allow for unbounded size.
@@ -6,7 +8,7 @@
  * on the house.
  * @param <T> the elements stored in the stack
  }}}*/
-public class LinkedStack<T> implements StackInterface<T> {
+public class LinkedStack<T> implements StackInterface<T>, Iterable<T> {
 
     Node<T> top;
     int size;
@@ -59,4 +61,21 @@ public class LinkedStack<T> implements StackInterface<T> {
     public int size() {
         return size;
     }
+
+	@Override
+	public Iterator<T> iterator() {
+		return new Iterator<T>() {
+
+			@Override
+			public boolean hasNext() {
+				return !isEmpty();
+			}
+
+			@Override
+			public T next() {
+				return pop();
+			}
+
+		};
+	}
 }
