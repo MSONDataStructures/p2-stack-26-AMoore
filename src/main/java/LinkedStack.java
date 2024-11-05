@@ -62,6 +62,10 @@ public class LinkedStack<T> implements StackInterface<T>, Iterable<T> {
         return size;
     }
 
+	/**
+	 * Will destroy stack.
+	 * Have fun >:)
+	 */
 	@Override
 	public Iterator<T> iterator() {
 		return new Iterator<T>() {
