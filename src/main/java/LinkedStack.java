@@ -18,6 +18,10 @@ public class LinkedStack<T> implements StackInterface<T>, Iterable<T> {
 	 }}}*/
     @Override
     public T pop() {
+		Node<T> ret = top;
+		top = (top == null) ? null : top.next;
+		size--;
+		return (ret == null) ? null : ret.element;
     }
 
     /**{{{
