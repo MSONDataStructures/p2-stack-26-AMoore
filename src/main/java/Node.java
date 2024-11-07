@@ -1,7 +1,7 @@
-/**
+/**{{{
  * A {@link Node} is an element of a stack that is implemented
  * using a Linked List structure to allow for unbounded size.
- */
+ }}}*/
 class Node<T>
 {
     // TONOTDO: you do not need to modify this class,
